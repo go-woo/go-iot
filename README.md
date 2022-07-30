@@ -1,7 +1,7 @@
 #### copy files between host and guest OS
 ``` 
 sudo apt install -y open-vm-tools
-sudo apt install open-vm-tools-desktop
+sudo apt install -y open-vm-tools-desktop
 
 sudo gedit /etc/gdm3/custom.conf
 WaylandEnable=false
@@ -17,7 +17,7 @@ gsettings set org.gnome.desktop.interface scaling-factor 2
 ```
 #### install git curl
 ``` 
-sudo apt-get install -y curl git
+sudo apt-get install -y curl git tree net-tools
 ```
 #### go
 ```
@@ -27,7 +27,8 @@ sudo mv go /usr/local/
 gedit .profile
 
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$HOME/.local/bin
 export GOSUMDB=off
 export DEBUG=1
 export CGO_ENABLED=0
@@ -54,13 +55,13 @@ StartupWMClass=jetbrains-goland"\n"\
 ``` 
 sudo apt-get update
 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common git
-sudo apt install docker.io
+sudo apt install -y docker.io
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 sudo service docker restart
 sudo gedit /etc/docker/daemon.json
 {
-  "registry-mirrors": ["http://hub-mirror.c.163.com"],
+  "registry-mirrors": ["https://hub-mirror.c.163.com"],
   "log-driver": "json-file",
   "log-opts": {
         "max-size" :"50m",
@@ -75,5 +76,4 @@ sudo systemctl restart docker.service
 ``` 
 sudo curl -L https://get.daocloud.io/docker/compose/releases/download/v2.7.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-
 ```

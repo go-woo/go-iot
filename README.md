@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="website/whats.svg" alt="go-woo">
+  <img src="website/whats.png" alt="go-woo">
 </p>
 
 ## What is go-woo
